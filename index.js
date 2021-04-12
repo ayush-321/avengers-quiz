@@ -49,7 +49,7 @@ var questions = [
   {
     question: "Frigga is the name of Thor's mother?",
 
-    answer: 'yes'
+    answer: 'no'
   },
 
   {
