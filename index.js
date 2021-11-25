@@ -106,3 +106,116 @@ if(points <= 4){
   console.log(chalk.blue.bold('You earned ' + points + ' points.Congratulations.You are a true avenger fan!'));
 }
 
+
+
+
+
+
+
+
+
+
+namespace Ford.CommissionT
+{
+     public  struct FordMotors  //structure created with three member variables
+    {
+        public double month1;
+        public double month2;
+        public double month3;
+    }
+
+    public class Program1
+    {
+        //Method to Calculate the quarterly sales with double return type
+        public double Quarterly_sales(double sum)
+        {
+            double commission;
+
+            //condition to check the commission rate
+            if(sum>=50000)
+            {
+                commission = 5.0;
+            }
+            else if (sum>=30000 && sum<=50000)
+            {
+                commission = 4.5;
+            }
+            else if (sum >= 20000 && sum <= 30000)
+            {
+                commission = 3.75;
+            }
+            else if (sum >= 15000 && sum <= 20000)
+            {
+                commission = 2.5;
+            }
+            else if (sum >= 10000 && sum <= 15000)
+            {
+                commission = 1.75;
+            }
+            else
+            {
+                commission = 0.0;
+            }
+
+            return sum*(commission/100);
+        }
+
+        //Method to Calculate the Monthly sales with double return type
+        public double Monthly_sales(double M1, double M2, double M3,double sum)
+        {
+            double commission;
+
+            //condition to check commission rate for monthly sales
+            if(M1 >= 7500 && M2 >= 7500 && M3 >= 7500)
+            {
+                commission = 1.25;
+            }
+            else if(M1 >= 12000 && M2 >= 12000 && M3 >= 12000)
+            {
+                commission = 2.45;
+            }
+            else
+            {
+                commission = 0.0;
+            }
+            return sum * (commission / 100);
+
+        }
+    }
+
+    public class Program   
+    {
+        
+        public static void Main(string[] args)
+        {
+            //creating an instance of structure class
+            FordMotors fm = new FordMotors();  
+
+            //Take input from user for month1,month 2,month3
+            Console.WriteLine("Month-1 Sales in USD:");
+            fm.month1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Month-2 Sales in USD:");
+            fm.month2 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Month-3 Sales in USD:");
+            fm.month3 = double.Parse(Console.ReadLine());
+
+            //Total of three months
+            double total = fm.month1 + fm.month2 + fm.month3;
+
+            //instance of Program1 class
+            Program1 pg1 = new Program1();
+
+            //calculate total commission from monthly and quaterly sales
+            double Total_commission = pg1.Quarterly_sales(total) + pg1.Monthly_sales(fm.month1, fm.month2, fm.month3, total);
+
+            //print total sales,monthly sales,quaterly sales and total commission
+            Console.WriteLine("Total Sale for the Quarter: "+total+" USD");
+            Console.WriteLine("Quarterly overall Sales Commission: "+ pg1.Quarterly_sales(total)+" USD");
+            Console.WriteLine("Monthly Minimum Commission: "+pg1.Monthly_sales(fm.month1, fm.month2, fm.month3,total)+ " USD");
+            Console.WriteLine("Total Commission for the Quarter: " + Total_commission + " USD");
+
+            Console.ReadLine();
+        }
+    }
+}
+
